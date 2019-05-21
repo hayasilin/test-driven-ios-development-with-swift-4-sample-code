@@ -130,6 +130,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6513259022940FA40058934C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				653A563121B1165F000C8C3C /* ApiClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6513259122940FCB0058934C /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				653A561421B0BF2F000C8C3C /* ItemListViewController.swift */,
+				653A561521B0BF2F000C8C3C /* ItemListViewController.xib */,
+				653A561821B0C066000C8C3C /* ItemListDataProvider.swift */,
+				653A561C21B0CF37000C8C3C /* ItemCell.swift */,
+				653A561D21B0CF38000C8C3C /* ItemCell.xib */,
+				653A562421B0F4A0000C8C3C /* DetailViewController.swift */,
+				653A562521B0F4A0000C8C3C /* DetailViewController.xib */,
+				653A562B21B10D74000C8C3C /* InputViewController.swift */,
+				653A562C21B10D74000C8C3C /* InputViewController.xib */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		653A55BD21AFF9C9000C8C3C = {
 			isa = PBXGroup;
 			children = (
@@ -165,16 +189,8 @@
 				653A55D521AFF9CA000C8C3C /* Info.plist */,
 				653A561121B0BED0000C8C3C /* Model */,
 				653A55FC21B03C64000C8C3C /* UnitTestDemo.xcdatamodeld */,
-				653A561421B0BF2F000C8C3C /* ItemListViewController.swift */,
-				653A561521B0BF2F000C8C3C /* ItemListViewController.xib */,
-				653A561821B0C066000C8C3C /* ItemListDataProvider.swift */,
-				653A561C21B0CF37000C8C3C /* ItemCell.swift */,
-				653A561D21B0CF38000C8C3C /* ItemCell.xib */,
-				653A562421B0F4A0000C8C3C /* DetailViewController.swift */,
-				653A562521B0F4A0000C8C3C /* DetailViewController.xib */,
-				653A562B21B10D74000C8C3C /* InputViewController.swift */,
-				653A562C21B10D74000C8C3C /* InputViewController.xib */,
-				653A563121B1165F000C8C3C /* ApiClient.swift */,
+				6513259122940FCB0058934C /* Pages */,
+				6513259022940FA40058934C /* Service */,
 				653A563321B117B4000C8C3C /* Token.swift */,
 			);
 			path = UnitTestDemo;
