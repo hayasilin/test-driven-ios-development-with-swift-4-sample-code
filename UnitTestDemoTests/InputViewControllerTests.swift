@@ -54,10 +54,42 @@ class InputViewControllerTests: XCTestCase {
 //        let testItem = ToDoItem(title: "Foo",
 //                                itemDescription: "Baz",
 //                                timestamp: timestamp,
-//                                location: Location(name: "Bar",
-//                                                   coordinate: coordinate))
+//                                location: Location(name: "Bar", coordinate: coordinate))
 //        XCTAssertEqual(item, testItem)
 //    }
+
+    func testMockCLLocation() {
+
+        let latitude = 35.3316851
+        let longitude = 122.0300674
+        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+
+        placemark = MockPlacemark()
+        placemark.mockCoordinate = coordinate
+
+        let mockGeocoder = MockGeocoder()
+        mockGeocoder.placemark = placemark
+
+        let geocoderAnswered = expectation(description: "Test Geocoder")
+
+        mockGeocoder.geocodeAddressString("Infinite Loop 1, Cupertino") { (placemarks, error) in
+            let coordinate = placemarks?.first?.location?.coordinate
+            guard let latitude = coordinate?.latitude else {
+                XCTFail()
+                return
+            }
+            guard let longitude = coordinate?.longitude else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(latitude, latitude, accuracy: 0.001)
+            XCTAssertEqual(longitude, longitude, accuracy: 0.001)
+
+            geocoderAnswered.fulfill()
+        }
+
+        wait(for: [geocoderAnswered], timeout: 10)
+    }
 
     func test_SaveButtonHasSaveAction() {
         let saveButton: UIButton = sut.saveButton
@@ -110,11 +142,14 @@ extension InputViewControllerTests {
     class MockGeocoder: CLGeocoder {
 
         var completionHandler: CLGeocodeCompletionHandler?
+        var placemark: CLPlacemark?
+        var error: Error?
 
         override func geocodeAddressString(
             _ addressString: String,
             completionHandler: @escaping CLGeocodeCompletionHandler) {
-            self.completionHandler = completionHandler
+//            self.completionHandler = completionHandler
+            completionHandler([placemark!], error)
         }
     }
 

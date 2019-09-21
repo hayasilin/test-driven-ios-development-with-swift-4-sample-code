@@ -39,6 +39,10 @@ class InputViewController: UIViewController {
 
     
     @IBAction func save(_ sender: UIButton) {
+        save()
+    }
+
+    func save() {
         guard let titleString = titleTextField.text, titleString.count > 0 else { return }
 
         let date: Date?
@@ -80,8 +84,6 @@ class InputViewController: UIViewController {
 
             self.itemManager?.add(item)
         }
-
         dismiss(animated: true)
     }
-
 }
